@@ -55,68 +55,7 @@ By the end of the module, students should be able to:
 
 ---
 
-## **1.4 What We Are *Not* Covering**
-
-This module intentionally excludes a number of highly specialised skills:
-
-### **Character Art Pipeline**
-
-* Concept art / character design
-* Sculpting (ZBrush, Blender high-poly)
-* Retopology
-* UV unwrapping
-* Texturing / PBR workflow
-* Baking maps (normals, AO etc.)
-
-### **Advanced Rigging**
-
-* Creating custom humanoid rigs from scratch
-* Complex skin weighting / painting
-* IK/FK switching workflows
-* Facial rigging and blendshape systems
-
-### **Advanced Animation Production**
-
-* Acting-based keyframe character animation
-* Motion capture cleanup
-* Cinematics pipelines
-* Advanced procedural animation (full IK systems, ragdolls, dynamic locomotion)
-
-Where relevant, some of these areas may be touched on **conceptually**, but **students will not be assessed** on them and will not need the skills to complete coursework.
-
----
-
-## **1.5 Practical Projects in the Semester**
-
-Students will complete **two core practical projects** plus several **in-class micro-exercises**:
-
-### **1) Animation Systems Mini-Scene (Weeks 5–9)**
-
-A functional scene containing:
-
-* A humanoid character using retargeted and blended animations
-* At least one inorganic animated object (door/mechanism/platform)
-* Some interaction demonstrating animation triggering
-
-This focuses on demonstrating core competencies in **Mixamo → Unity workflow**, **Animator Controller design**, and **inorganic animation**.
-
----
-
-### **2) Procedural Creature Animation Prototype (Weeks 10–12)**
-
-* **Creature Path:** Implement the procedural alien leg system using curves and ScriptableObjects
-
-This project emphasises **creativity**, **iteration**, and  procedural thinking with complex curve-based setup.
-
----
-
-Got it — here is the **markdown wrapper** with a clear **title and subheading**, followed by the Mermaid diagram.
-
-You can paste this directly into GitHub.
-
----
-
-## **1.6 Unity Animation Systems – Module Touchstone Map**
+## **1.4 Unity Animation Systems – Module Touchstone Map**
 
 ### *How the different animation workflows taught in this module connect together*
 
@@ -161,3 +100,63 @@ graph TD;
   %% Output
   D1 --> Z[Playable Scene or Prototype];
 ```
+## **1.5 What We Are *Not* Covering**
+
+This module intentionally excludes a number of highly specialised skills:
+
+### **Character Art Pipeline**
+
+* Concept art / character design
+* Sculpting (ZBrush, Blender high-poly)
+* Retopology
+* UV unwrapping
+* Texturing / PBR workflow
+* Baking maps (normals, AO etc.)
+
+### **Advanced Rigging**
+
+* Creating custom humanoid rigs from scratch
+* Complex skin weighting / painting
+* IK/FK switching workflows
+* Facial rigging and blendshape systems
+
+### **Advanced Animation Production**
+
+* Acting-based keyframe character animation
+* Motion capture cleanup
+* Cinematics pipelines
+* Advanced procedural animation (full IK systems, ragdolls, dynamic locomotion)
+
+Where relevant, some of these areas may be touched on **conceptually**, but **students will not be assessed** on them and will not need the skills to complete coursework.
+
+---
+
+## **1.6 Practical Projects in the Semester**
+
+Students will complete **two core practical projects** plus several **in-class micro-exercises**:
+
+### **1) Animation Systems Mini-Scene (Weeks 5–9)**
+
+A functional scene containing:
+
+* A humanoid character using retargeted and blended animations
+* At least one inorganic animated object (door/mechanism/platform)
+* Some interaction demonstrating animation triggering
+
+This focuses on demonstrating core competencies in **Mixamo → Unity workflow**, **Animator Controller design**, and **inorganic animation**.
+
+---
+
+### **2) Procedural Creature Animation Prototype (Weeks 10–12)**
+
+* **Creature Path:** Implement the procedural alien leg system using curves and ScriptableObjects
+
+This project emphasises **creativity**, **iteration**, and  procedural thinking with complex curve-based setup.
+
+---
+
+Got it — here is the **markdown wrapper** with a clear **title and subheading**, followed by the Mermaid diagram.
+
+You can paste this directly into GitHub.
+
+---
