@@ -57,7 +57,7 @@ By the end of the module, students should be able to:
 
 ## **1.4 Unity Animation Systems – Module Touchstone Map**
 
-### *How the different animation workflows taught in this module connect together*
+How the different animation workflows taught in this module connect together
 
 ```mermaid
 graph TD;
@@ -155,8 +155,3 @@ This project emphasises **creativity**, **iteration**, and  procedural thinking 
 
 ---
 
-Got it — here is the **markdown wrapper** with a clear **title and subheading**, followed by the Mermaid diagram.
-
-You can paste this directly into GitHub.
-
----
