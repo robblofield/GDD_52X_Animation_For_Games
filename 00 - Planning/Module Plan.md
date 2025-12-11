@@ -113,6 +113,39 @@ This project emphasises **creativity**, **iteration**, and  procedural thinking 
 ```mermaid
 graph TD;
 
+  A[Ruined Hub] --> B1[Explore Ruins];
+  A --> B2[Read Lore];
+  A --> B3[View Cosmetics/Trophies];
+
+  B1 --> C[Enter District];
+  B2 --> C;
+  B3 --> C;
+
+  C --> D[Mandatory Plaza 1];
+
+  D --> E{Choose Level Type};
+  E --> F1[Battleground];
+  E --> F2[Gauntlet];
+  E --> F3[Observatory];
+  E --> F4[Treasury];
+
+  F1 --> G[Mandatory Plaza 2];
+  F2 --> G;
+  F3 --> G;
+  F4 --> G;
+
+  G --> H[Merchant's Market];
+  H --> I[Defeat District Boss];
+  I --> I2[Unlock Next District];
+  I2 --> J[Earn Unlock Points];
+  J --> J2[Spend Points on Permanent Upgrades];
+  J2 --> K[Return to Ruined Hub];
+  K --> A;
+```
+
+```mermaid
+graph TD;
+
   %% Core asset acquisition
   A[Animation Sources] --> A1[Mixamo Humanoid Animations];
   A --> A2[Unity Keyframed Inorganic Animations];
