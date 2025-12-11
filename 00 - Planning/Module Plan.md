@@ -180,6 +180,49 @@ graph TD;
   F --> F1[Runtime Curve Swapping (Normal / Damaged / Custom)];
   F1 --> F2[Procedural Creature Leg Motion];
   F2 --> D1;
+```
+
+```mermaid
+graph TD;
+
+  %% Core asset acquisition
+  A[Animation Sources] --> A1[Mixamo Humanoid Animations];
+  A[Animation Sources] --> A2[Unity Keyframed Inorganic Animations];
+  A[Animation Sources] --> A3[Procedural Curves and ScriptableObjects];
+
+  %% Humanoid import path
+  A1 --> B[Unity Import Settings];
+  B --> B1[Avatar Definition];
+  B --> B2[Humanoid Rig Mapping];
+  B --> B3[Root Motion Settings];
+
+  %% Controller setup
+  B --> C[Animator Controller];
+  A2 --> C;
+  C --> C1[States and Transitions];
+  C --> C2[Blend Trees];
+  C --> C3[Avatar Masks and Layers];
+
+  %% Runtime control
+  C1 --> D[Parameter Driven Animations];
+  C2 --> D;
+  C3 --> D;
+  D --> D1[Gameplay Scripts Trigger Animations];
+
+  %% Inorganic / curve animation path
+  A2 --> E[Animation Window and Curves];
+  E --> E1[Doors, Platforms, Mechanisms];
+  E1 --> D1;
+
+  %% Procedural animation path
+  A3 --> F[Curve Profiles in ScriptableObjects];
+  F --> F1[Runtime Curve Swapping];
+  F1 --> F2[Procedural Creature Leg Motion];
+  F2 --> D1;
+
+  %% Output
+  D1 --> Z[Playable Scene or Prototype];
+```
 
   
   D1 --> Z[Playable Scene / Prototype];
