@@ -110,77 +110,15 @@ This project emphasises **creativity**, **iteration**, and  procedural thinking 
 
 ---
 
-```mermaid
-graph TD;
+Got it — here is the **markdown wrapper** with a clear **title and subheading**, followed by the Mermaid diagram.
 
-  A[Ruined Hub] --> B1[Explore Ruins];
-  A --> B2[Read Lore];
-  A --> B3[View Cosmetics/Trophies];
+You can paste this directly into GitHub.
 
-  B1 --> C[Enter District];
-  B2 --> C;
-  B3 --> C;
+---
 
-  C --> D[Mandatory Plaza 1];
+## **1.6 Unity Animation Systems – Module Touchstone Map**
 
-  D --> E{Choose Level Type};
-  E --> F1[Battleground];
-  E --> F2[Gauntlet];
-  E --> F3[Observatory];
-  E --> F4[Treasury];
-
-  F1 --> G[Mandatory Plaza 2];
-  F2 --> G;
-  F3 --> G;
-  F4 --> G;
-
-  G --> H[Merchant's Market];
-  H --> I[Defeat District Boss];
-  I --> I2[Unlock Next District];
-  I2 --> J[Earn Unlock Points];
-  J --> J2[Spend Points on Permanent Upgrades];
-  J2 --> K[Return to Ruined Hub];
-  K --> A;
-```
-
-```mermaid
-graph TD;
-
-  
-  A[Animation Sources] --> A1[Mixamo Humanoid Animations];
-  A --> A2[Unity Keyframed Inorganic Animations];
-  A --> A3[Procedural Curves / ScriptableObjects];
-
-  
-  A1 --> B[Unity Import Settings];
-  B --> B1[Avatar Definition];
-  B --> B2[Humanoid Rig Mapping];
-  B --> B3[Root Motion Settings];
-
-  
-  B --> C[Animator Controller];
-  A2 --> C;
-  C --> C1[States & Transitions];
-  C --> C2[Blend Trees];
-  C --> C3[Avatar Masks / Layers];
-
-  
-  C1 --> D[Parameter Driven Animations];
-  C2 --> D;
-  C3 --> D;
-  D --> D1[Gameplay Scripts Trigger Animations];
-
-  
-  A2 --> E[Animation Window / Curves];
-  E --> E1[Doors / Platforms / Mechanisms];
-  E1 --> D1;
-
-  
-  A3 --> F[Curve Assets Stored in ScriptableObjects];
-  F --> F1[Runtime Curve Swapping (Normal / Damaged / Custom)];
-  F1 --> F2[Procedural Creature Leg Motion];
-  F2 --> D1;
-```
+### *How the different animation workflows taught in this module connect together*
 
 ```mermaid
 graph TD;
@@ -222,8 +160,4 @@ graph TD;
 
   %% Output
   D1 --> Z[Playable Scene or Prototype];
-```
-
-  
-  D1 --> Z[Playable Scene / Prototype];
 ```
