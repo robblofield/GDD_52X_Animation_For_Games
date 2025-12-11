@@ -102,32 +102,10 @@ graph TD;
 ```
 ## **1.5 What We Are *Not* Covering**
 
-This module intentionally excludes a number of highly specialised skills:
+We are deliberately **not covering high-complexity character art, rigging, or advanced animation pipelines** because these require specialist tools, long production times, and prior expertise that sit outside the scope of this module. The focus here is on **practical, achievable animation workflows** that students can use immediately in game prototypes.
 
-### **Character Art Pipeline**
+Students will see some of these advanced areas **conceptually**, but they are **not required for assessment** and are intentionally excluded to keep the module accessible, focused, and realistic within the available teaching weeks.
 
-* Concept art / character design
-* Sculpting (ZBrush, Blender high-poly)
-* Retopology
-* UV unwrapping
-* Texturing / PBR workflow
-* Baking maps (normals, AO etc.)
-
-### **Advanced Rigging**
-
-* Creating custom humanoid rigs from scratch
-* Complex skin weighting / painting
-* IK/FK switching workflows
-* Facial rigging and blendshape systems
-
-### **Advanced Animation Production**
-
-* Acting-based keyframe character animation
-* Motion capture cleanup
-* Cinematics pipelines
-* Advanced procedural animation (full IK systems, ragdolls, dynamic locomotion)
-
-Where relevant, some of these areas may be touched on **conceptually**, but **students will not be assessed** on them and will not need the skills to complete coursework.
 
 ---
 
@@ -152,6 +130,25 @@ This focuses on demonstrating core competencies in **Mixamo → Unity workflow**
 * **Creature Path:** Implement the procedural alien leg system using curves and ScriptableObjects
 
 This project emphasises **creativity**, **iteration**, and  procedural thinking with complex curve-based setup.
+
+---
+
+# **2. Week-by-Week Plan (Teaching Weeks 1–12)**
+
+| Week   | Session Title                                                                          | 12 Principles (Theory Focus)                                  | Teacher   | What Problem Are We Solving?                                                                                 |
+| ------ | -------------------------------------------------------------------------------------- | ------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------ |
+| **1**  | Content TBC                                                                            | –                                                             | **Emily** | –                                                                                                            |
+| **2**  | Content TBC                                                                            | –                                                             | **Emily** | –                                                                                                            |
+| **3**  | Content TBC                                                                            | –                                                             | **Emily** | –                                                                                                            |
+| **4**  | Content TBC                                                                            | –                                                             | **Emily** | –                                                                                                            |
+| **5**  | **Humanoid Animation Pt. 1 – Mixamo Workflow & Unity Import Pipeline**                 | *Squash & Stretch*, *Pose-to-Pose*, *Timing*                  | **Rob**   | **“How do I get a character rigged and animated quickly without doing the whole character pipeline?”**       |
+| **6**  | **Humanoid Animation Pt. 2 – Retargeting & Blend Trees**                               | *Anticipation*, *Follow-Through & Overlapping Action*, *Arcs* | **Rob**   | **“How do I reuse animations on different characters, and how do I blend them smoothly?”**                   |
+| **7**  | **Inorganic Animation Pt. 1 – Doors, Platforms & Mechanisms**                          | *Slow In / Slow Out*, *Secondary Action*                      | **Rob**   | **“How do I animate objects and environments so they feel intentional and readable in gameplay?”**           |
+| **8**  | **Inorganic Animation Pt. 2 – Curve-Driven Motion & Creative Timing**                  | *Exaggeration*, *Staging*                                     | **Rob**   | **“How do I use animation curves to control motion precisely and make mechanical movement feel impactful?”** |
+| **9**  | **Animation Blending – Partial Body Masks & Layered Motion**                           | *Appeal*, *Solid Drawing*                                     | **Rob**   | **“How do I combine multiple animations at once, like walking + aiming, without them breaking?”**            |
+| **10** | **Procedural Creature Animation Pt. 1 – Curve-Driven Leg Systems**                     | *(All principles covered — no new ones added)*                | **Rob**   | **“How do I animate a non-humanoid creature where keyframed animation isn’t enough?”**                       |
+| **11** | **Procedural Creature Animation Pt. 2 – Curve Profiles & Runtime Behaviour Switching** | *(All principles covered — no new ones added)*                | **Rob**   | **“How do I change a creature’s movement behaviour at runtime (e.g., damaged leg)?”**                        |
+| **12** | **Final Integration – Building the Animated Game-Ready Mini-Prototype**                | *(All principles covered — no new ones added)*                | **Rob**   | **“How do I bring everything together into a single, believable animated scene ready for assessment?”**      |
 
 ---
 
