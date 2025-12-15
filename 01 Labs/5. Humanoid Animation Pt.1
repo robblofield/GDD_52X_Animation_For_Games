@@ -1,0 +1,502 @@
+# Humanoid Animation Pt. 1
+
+## Mixamo → Unity Animation Pipeline (Idle, Walk)
+
+### Lab + Challenge: Implement Jump
+
+---
+
+## Module Context
+
+This lab introduces the **core Unity animation pipeline for pre-made humanoid characters**.
+You will not be creating characters or animations from scratch.
+
+Instead, you will learn how to:
+
+* Acquire a rigged humanoid character and animations from Mixamo
+* Configure them correctly in Unity
+* Build a simple Animator Controller
+* Drive animation using an existing player controller
+
+This pipeline is reused throughout the semester.
+
+---
+
+## Learning Objectives
+
+By the end of this lab, you should be able to:
+
+* Import a humanoid character and create a valid Avatar
+* Retarget multiple animations onto the same humanoid rig
+* Understand how Unity’s animation windows fit together
+* Build a basic Animator Controller (Idle ↔ Walk)
+* Drive animation state changes using code
+* Extend the pipeline to support Jump (challenge)
+
+---
+
+## Core Question This Lab Solves
+
+> How do I get a character rigged and animated quickly without doing the full character creation pipeline?
+
+---
+
+## The Unity Animation Pipeline (Big Picture)
+
+Before touching assets, it is important to understand how Unity’s animation systems connect.
+
+### Animation Pipeline Overview
+
+```mermaid
+flowchart TD
+    A[Model FBX] -->|Rig Tab| B[Humanoid Rig]
+    B --> C[Avatar]
+    D[Animation FBX Files] -->|Rig Tab<br/>Copy From Avatar| C
+    C --> E[Animation Clips]
+    E --> F[Animator Controller]
+    F --> G[Animator Component]
+    G --> H[Player GameObject]
+    I[PlayerMovement.cs] -->|Movement Data| J[PlayerAnimationDriver.cs]
+    J -->|Parameters| F
+```
+
+### How to Read This
+
+* **Model FBX** provides the mesh and skeleton
+* **Avatar** is Unity’s internal humanoid mapping
+* **Animation FBXs** contain motion only
+* **Animator Controller** decides which animation plays
+* **PlayerAnimationDriver** connects gameplay state to animation
+* **PlayerMovement** does not play animations directly
+
+Keep this flow in mind whenever something breaks.
+
+---
+
+## What You Are Given
+
+* A Unity 3D URP project
+* A provided package:
+
+```
+Teaching_CorePlayer_3D.unitypackage
+```
+
+This includes:
+
+* A working `PlayerMovement.cs` script
+* A basic player prefab with WASD movement
+
+You should confirm movement works **before** starting the lab.
+
+---
+
+## What You Must Acquire (Mixamo)
+
+From Mixamo you must download:
+
+* 1 humanoid character model
+* 3 animations:
+
+  * Idle
+  * Walk
+  * Jump (used for the challenge)
+
+---
+
+## Suggested Folder Structure
+
+```
+Assets/
+└── Teaching/
+    ├── Characters/
+    │   └── Mixamo/
+    │       ├── Models/
+    │       ├── Animations/
+    │       ├── Controllers/
+    │       └── Prefabs/
+    └── Scripts/
+```
+
+Keeping assets organised avoids import and retargeting errors.
+
+---
+
+# Part 0 – Project Setup
+
+### Step 0.1 Import the Teaching Package
+
+1. Open the Unity project.
+2. Import `Teaching_CorePlayer_3D.unitypackage`.
+3. Locate the provided player prefab or scene.
+4. Enter Play Mode and confirm:
+
+   * WASD movement works
+   * No errors appear in the Console
+
+**Checkpoint:**
+You can move the player character before adding animation.
+
+---
+
+# Part 1 – Acquire Assets From Mixamo
+
+## Step 1.1 Download the Character Model
+
+On Mixamo:
+
+* Select a humanoid character
+* Download settings:
+
+  * Format: FBX for Unity
+  * Skin: With Skin
+  * Pose: T-Pose (recommended)
+
+Name example:
+
+```
+Mixamo_Character.fbx
+```
+
+Place in:
+
+```
+Assets/Teaching/Characters/Mixamo/Models
+```
+
+---
+
+## Step 1.2 Download the Animations
+
+Download three animations:
+
+### Idle
+
+* Format: FBX for Unity
+* Skin: Without Skin
+
+### Walk
+
+* Format: FBX for Unity
+* Skin: Without Skin
+* In Place: Enabled (recommended)
+
+### Jump
+
+* Format: FBX for Unity
+* Skin: Without Skin
+
+Name examples:
+
+```
+Mixamo_Idle.fbx
+Mixamo_Walk.fbx
+Mixamo_Jump.fbx
+```
+
+Place in:
+
+```
+Assets/Teaching/Characters/Mixamo/Animations
+```
+
+**Checkpoint:**
+You have one model FBX and three animation FBXs in the correct folders.
+
+---
+
+# Part 2 – Humanoid Rig & Avatar Setup
+
+## Step 2.1 Configure the Character Model
+
+1. Select `Mixamo_Character.fbx`
+2. Inspector → Rig tab
+3. Set:
+
+   * Animation Type: Humanoid
+   * Avatar Definition: Create From This Model
+4. Click Apply
+
+Optional but recommended:
+
+* Click Configure and confirm bone mapping is valid.
+
+---
+
+## Step 2.2 Configure Animation Files
+
+For **each animation FBX**:
+
+1. Select the animation file
+2. Rig tab:
+
+   * Animation Type: Humanoid
+   * Avatar Definition: Copy From Other Avatar
+   * Source: Avatar from `Mixamo_Character.fbx`
+3. Click Apply
+
+**Checkpoint:**
+All animations reference the same humanoid Avatar.
+
+---
+
+# Part 3 – Attach the Character to the Player Prefab
+
+## Step 3.1 Prepare the Player Prefab
+
+1. Locate the provided player prefab
+2. Duplicate it:
+
+```
+PlayerPrefab_Animated
+```
+
+## Step 3.2 Add the Character Model
+
+1. Open the prefab
+2. Add the Mixamo model as a child
+3. Rename child:
+
+```
+Model
+```
+
+4. Reset local transform
+
+Adjust scale or rotation **only on the Model child**, not the root.
+
+**Checkpoint:**
+The player moves and the model follows correctly.
+
+---
+
+# Part 4 – Animator Controller (Idle & Walk)
+
+## Step 4.1 Create Animator Controller
+
+Create:
+
+```
+AC_Player_HumanoidBasic
+```
+
+Location:
+
+```
+Assets/Teaching/Characters/Mixamo/Controllers
+```
+
+---
+
+## Step 4.2 Animator Parameters
+
+Add:
+
+* Float `Speed`
+* Bool `IsGrounded`
+* Trigger `Jump`
+
+---
+
+## Step 4.3 States and Transitions
+
+States:
+
+* Idle (default)
+* Walk
+
+Transitions:
+
+* Idle → Walk when `Speed > 0.1`
+* Walk → Idle when `Speed < 0.1`
+
+Use short transition durations for responsiveness.
+
+---
+
+# Part 5 – Animator Component Setup
+
+1. Add an Animator component to the animated object
+2. Assign:
+
+   * Controller: `AC_Player_HumanoidBasic`
+   * Avatar: auto-assigned from the model
+
+**Checkpoint:**
+Animator is active in Play Mode.
+
+---
+
+# Part 6 – PlayerAnimationDriver Script
+
+## Purpose
+
+This script:
+
+* Reads player movement
+* Drives Animator parameters
+* Handles jump animation triggering
+
+Movement logic remains in `PlayerMovement.cs`.
+
+---
+
+## Create Script
+
+Create:
+
+```
+PlayerAnimationDriver.cs
+```
+
+Attach it to the **player root object**.
+
+---
+
+## PlayerAnimationDriver.cs
+
+```csharp
+using UnityEngine;
+
+[RequireComponent(typeof(Collider))]
+public class PlayerAnimationDriver : MonoBehaviour
+{
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+
+    [Header("Speed Detection")]
+    [SerializeField] private float speedScale = 1f;
+    [SerializeField] private float speedSmoothing = 10f;
+
+    [Header("Jump")]
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private float groundCheckDistance = 0.2f;
+
+    private Vector3 lastPosition;
+    private float smoothedSpeed;
+    private bool isGrounded;
+
+    private Rigidbody rb;
+
+    private static readonly int SpeedHash = Animator.StringToHash("Speed");
+    private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
+    private static readonly int JumpHash = Animator.StringToHash("Jump");
+
+    private void Reset()
+    {
+        animator = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody>();
+    }
+
+    private void Awake()
+    {
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
+
+        rb = GetComponent<Rigidbody>();
+        lastPosition = transform.position;
+    }
+
+    private void Update()
+    {
+        UpdateSpeed();
+        UpdateGroundedState();
+        HandleJumpInput();
+    }
+
+    private void UpdateSpeed()
+    {
+        Vector3 delta = transform.position - lastPosition;
+        float dt = Time.deltaTime;
+
+        float rawSpeed = dt > 0f ? (delta.magnitude / dt) * speedScale : 0f;
+
+        smoothedSpeed = Mathf.Lerp(
+            smoothedSpeed,
+            rawSpeed,
+            1f - Mathf.Exp(-speedSmoothing * dt)
+        );
+
+        animator.SetFloat(SpeedHash, smoothedSpeed);
+        lastPosition = transform.position;
+    }
+
+    private void UpdateGroundedState()
+    {
+        isGrounded = Physics.Raycast(
+            transform.position,
+            Vector3.down,
+            groundCheckDistance,
+            groundMask
+        );
+
+        animator.SetBool(IsGroundedHash, isGrounded);
+    }
+
+    private void HandleJumpInput()
+    {
+        if (!isGrounded)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (rb != null)
+            {
+                Vector3 v = rb.linearVelocity;
+                v.y = 0f;
+                rb.linearVelocity = v;
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+
+            animator.SetTrigger(JumpHash);
+        }
+    }
+}
+```
+
+---
+
+## Checkpoint (End of Lab Section)
+
+* Idle plays when stationary
+* Walk plays when moving
+* Animator parameters update in Play Mode
+
+---
+
+# Challenge / Homework – Implement Jump
+
+You must complete **both**:
+
+### A. Animator
+
+* Add Jump state
+* Any State → Jump (Trigger)
+* Jump → Idle / Walk when grounded
+
+### B. Gameplay
+
+* Player leaves the ground
+* Player lands correctly
+* `IsGrounded` updates reliably
+
+---
+
+## Submission Checklist
+
+* Correct humanoid setup
+* Animator Controller wired correctly
+* PlayerAnimationDriver attached and working
+* Jump implemented and animated
+* Clean hierarchy and naming
+
+---
+
+## Common Issues to Check First
+
+* Rig not set to Humanoid
+* Animation avatar mismatch
+* Animator not assigned
+* Root Motion enabled accidentally
+* Model rotated instead of parent object
